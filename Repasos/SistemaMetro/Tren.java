@@ -1,15 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package sistemametro;
 
-import java.util.ArrayList;
-
-/**
- *
- * @author chuck
- */
 public class Tren {
     private String idTren,estadoTren;
     private int capacidadMaxima;
@@ -57,6 +47,29 @@ public class Tren {
 
     public void setLineasAsociada(Linea lineasAsociada) {
         this.lineasAsociada = lineasAsociada;
+    }
+    
+    
+    @Override
+    public boolean equals(Object comparado){
+        // Si es la misma referencia
+        if(this == comparado){
+            return true;
+        }
+        
+        // Si el objeto no es una instancia de Tren
+        if(!(comparado instanceof Tren)){
+            return false;
+        }
+        
+        // Si no ocurren las dos anteriores asumimos que es un tren y casteamos
+        Tren trenComparado = (Tren) comparado;
+        
+        // Comparamos atributos entre this y el objeto comparado
+        
+        return this.getCapacidadMaxima() == trenComparado.getCapacidadMaxima() &&
+                this.getIdTren().equals(trenComparado.getIdTren());
+        
     }
     
     // toString

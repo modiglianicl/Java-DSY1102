@@ -1,7 +1,4 @@
-
 package sistemametro;
-
-
 
 public class Estacion {
     private String idEstacion,nombreEstacion;

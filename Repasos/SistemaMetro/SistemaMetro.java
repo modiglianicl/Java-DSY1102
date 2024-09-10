@@ -3,18 +3,17 @@ package sistemametro;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class SistemaMetro {
 
-
     public static void main(String[] args) {
-        
+
         Scanner scanner = new Scanner(System.in);
         Validacion val = new Validacion();
-        Estacion estacionAgregar;
         Linea linea1 = new Linea("A1", "Linea 1", 2, 10);
         ArrayList<Estacion> estaciones = new ArrayList<>();
+        ArrayList<Tren> trenes = new ArrayList<>();
         Tren trenTest = null;
+        Estacion estacionAgregar;
         int opcionUsuario;
 
         do {
@@ -30,16 +29,7 @@ public class SistemaMetro {
                 case 1 -> {
                     System.out.print("Ingrese la id del Tren : ");
                     String idTren = scanner.nextLine();
-                    // Nombre y  su validacion
-                    System.out.print("Ingrese el nombre del Tren : ");
-                    String nombreTren = scanner.nextLine();
-                    while (val.validarNombre(nombreTren) == false) {
-                        System.out.println("Error, el nombre no puede ser vacio!");
-                        nombreTren = scanner.nextLine();
-                        if (val.validarNombre(nombreTren)) {
-                            break;
-                        }
-                    }
+
                     // Estado tren
                     System.out.print("Ingrese el estado del tren : ");
                     String estadoTren = scanner.nextLine();
@@ -60,7 +50,20 @@ public class SistemaMetro {
                     }
 
                     // Creamos tren
-                    trenTest = new Tren(idTren, nombreTren, capacidadTren, linea1);
+                    trenTest = new Tren(idTren, estadoTren, capacidadTren, linea1);
+                    
+                    // Verificamos si un tren identico existe
+                    if (!(trenes.isEmpty())) {
+                        System.out.println("Lista de trenes no esta vacia");
+                        if (!(trenes.contains(trenTest))) {
+                            trenes.add(trenTest);
+                        } else {
+                            System.out.println("El tren con esa id y capacidad maxima ya existe...");
+                            break;
+                        }
+                    } else {
+                        trenes.add(trenTest);
+                    }
 
                 }
                 case 2 -> {
@@ -114,14 +117,21 @@ public class SistemaMetro {
                     } else {
                         System.out.println("No hay estaciones!");
                     }
-                    
-                    System.out.println("=== ESTADO TRENES ===");
-                    System.out.println(trenTest);
+
+                    if (!(trenes.isEmpty())) {
+                        System.out.println("=== ESTADO TRENES ===");
+                        for (Tren tren : trenes) {
+                            System.out.println(tren); // Forma "floja" de presentar al tren... falta un metodo mas formal
+                        }
+                    } else {
+                        System.out.println("No hay trenes!");
+                    }
 
                 }
             }
 
         } while (opcionUsuario != 4);
+        System.out.println("Gracias por usar el sistema !");
     }
 
 }

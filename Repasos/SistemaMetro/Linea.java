@@ -1,6 +1,4 @@
-
 package sistemametro;
-
 
 public class Linea {
     private String idLinea,nombreLinea;

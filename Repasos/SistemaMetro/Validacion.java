@@ -1,10 +1,5 @@
-
 package sistemametro;
 
-/**
- *
- * @author chuck
- */
 public class Validacion {
     
     
