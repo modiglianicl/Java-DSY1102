@@ -21,8 +21,9 @@ public class GestionHotel {
         ContenedorHoteles hoteles = new ContenedorHoteles();
         ContenedorHabitaciones habitaciones = new ContenedorHabitaciones();
         ContenedorReservas reservas = new ContenedorReservas();
+        ContenedorClientes clientes = new ContenedorClientes();
         // Instanciamos la ui
-        Interface ui = new Interface(scanner,hoteles,habitaciones,reservas);
+        Interface ui = new Interface(scanner,hoteles,habitaciones,reservas,clientes);
         // Llamamos al menu
         ui.start();
     }

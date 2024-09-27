@@ -51,8 +51,7 @@ public class ContenedorReservas {
     public void mostrarReservasUi() { // Bien flojo...
         int contador = 0;
         for (Reserva reserva : this.reservas) {
-            System.out.println("Reserva " + contador);
-            System.out.println(reserva);
+            System.out.println(contador+1+ ".- Reserva " + contador+1 );
         }
     }
 

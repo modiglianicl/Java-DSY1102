@@ -18,13 +18,15 @@ public class Interface {
     private ContenedorHoteles hoteles;
     private ContenedorHabitaciones habitaciones;
     private ContenedorReservas reservas;
+    private ContenedorClientes clientes;
 
     // Constructor
-    public Interface(Scanner scanner, ContenedorHoteles hoteles, ContenedorHabitaciones habitaciones, ContenedorReservas reservas) {
+    public Interface(Scanner scanner, ContenedorHoteles hoteles, ContenedorHabitaciones habitaciones, ContenedorReservas reservas, ContenedorClientes clientes) {
         this.scanner = scanner;
         this.hoteles = hoteles;
         this.habitaciones = habitaciones;
         this.reservas = reservas;
+        this.clientes = clientes;
     }
 
     // Metodos
@@ -41,7 +43,8 @@ public class Interface {
             System.out.println("6.- Agregar una reserva");
             System.out.println("7.- Ver reservas");
             System.out.println("8.- Crear un cliente");
-            System.out.println("9.- Terminar Programa");
+            System.out.println("9.- Ver resumen clientes");
+            System.out.println("10.- Terminar Programa");
             opcionUsuario = Integer.parseInt(scanner.nextLine());
 
             switch (opcionUsuario) {
@@ -74,9 +77,13 @@ public class Interface {
                 case 8 -> {
                     this.opcionOcho();
                 }
+
+                case 9 ->  {
+                    this.opcionNueve();
+                }
             }
 
-        } while (opcionUsuario != 9);
+        } while (opcionUsuario != 10);
         System.out.println("Terminando programa....");
 
     }
@@ -283,7 +290,7 @@ public class Interface {
                     System.out.println("Regresando al menu");
                     break;
                 } else {
-                    habitacionReserva = this.habitaciones.getHabitaciones().get(opcionHabitacion-1);
+                    habitacionReserva = this.habitaciones.getHabitaciones().get(opcionHabitacion - 1);
                     System.out.println("Info habitacion seleccionada");
                     System.out.println(habitacionReserva);
                     reservaAgregar = new Reserva(hotelAgregarHabitacion);
@@ -310,7 +317,76 @@ public class Interface {
     }
 
     public void opcionOcho() {
-        System.out.println("Opcion 8");
+        String idCliente;
+        String nombreCliente;
+        int opcionReserva;
+        String opcionCliente;
+        Reserva reservaAgregar;
+        ArrayList<Reserva> reservasCliente = new ArrayList<>();
+        Cliente clienteNuevo;
+
+        // Preguntamos ID
+        while (true) {
+            System.out.println("Asigne una ID para el cliente : ");
+            idCliente = scanner.nextLine();
+            if (idCliente.isEmpty()) {
+                System.out.println("Debe de asignarle al menos un caracter!");
+            } else {
+                break;
+            }
+        }
+
+        // Preguntamos nombre ciente
+        while (true) {
+            System.out.println("Ingrese el nombre del cliente");
+            nombreCliente = scanner.nextLine();
+            if (nombreCliente.isEmpty()) {
+                System.out.println("El nombre debe tener al menos un caracter");
+            } else {
+                break;
+            }
+        }
+
+        // Preguntamos que reservas agregar
+        while (true) {
+            System.out.println("Que reserva desea asignarle al cliente:");
+            this.reservas.mostrarReservasUi();
+            System.out.println(this.reservas.getReservas().size() + 1 + ".- Volver al menu principal");
+            opcionReserva = Integer.parseInt(scanner.nextLine());
+
+            if (opcionReserva < 0) {
+                System.out.println("Elija una opcion correcta");
+            } else if (opcionReserva == this.reservas.getReservas().size() + 1) {
+                break;
+            } else {
+                reservaAgregar = this.reservas.getReservas().get(opcionReserva - 1);
+                reservasCliente.add(reservaAgregar);
+                System.out.println("Reserva agregada al cliente");
+                System.out.println("Desea agregar otra reserva para el cliente? presione 's' si lo desea");
+                opcionCliente = scanner.nextLine();
+
+                if (opcionCliente.toLowerCase().equals("s")) {
+                    continue;
+                }
+
+                break;
+            }
+        }
+
+        // Creamos cliente
+        clienteNuevo = new Cliente(idCliente, nombreCliente, reservasCliente);
+
+        // Agregamos cliente a lista de cliente
+        if (this.clientes.agregarCliente(clienteNuevo)) {
+            this.clientes.agregarCliente(clienteNuevo);
+        } else {
+            System.out.println("El cliente ya existe!");
+        }
+
+    }
+
+    public void opcionNueve() {
+        this.clientes.mostrarInformacionClientesUi();
     }
 
 }
