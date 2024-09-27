@@ -1,0 +1,64 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package gestionhotel;
+
+/**
+ *
+ * @author chuck
+ */
+public class Habitacion {
+    // Atributos
+    private String numeroHabitacion;
+    private double precioNoche;
+    private boolean disponible;
+    
+    // Constructores
+    public Habitacion() {
+    }
+
+    public Habitacion(String numeroHabitacion, double precioNoche, boolean disponible) {
+        this.numeroHabitacion = numeroHabitacion;
+        this.precioNoche = precioNoche;
+        this.disponible = disponible;
+    }
+    
+    // Metodos
+
+    public String getNumeroHabitacion() {
+        return numeroHabitacion;
+    }
+
+    public void setNumeroHabitacion(String numeroHabitacion) {
+        this.numeroHabitacion = numeroHabitacion;
+    }
+
+    public double getPrecioNoche() {
+        return precioNoche;
+    }
+
+    public void setPrecioNoche(double precioNoche) {
+        this.precioNoche = precioNoche;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+    
+    // toString
+
+    @Override
+    public String toString() {
+        return "Habitacion{" + "numeroHabitacion=" + numeroHabitacion + ", precioNoche=" + precioNoche + ", disponible=" + disponible + '}';
+    }
+    
+    
+    
+    
+    
+}
