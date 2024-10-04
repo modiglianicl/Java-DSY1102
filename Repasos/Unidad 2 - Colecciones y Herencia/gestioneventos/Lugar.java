@@ -47,6 +47,10 @@ public class Lugar {
     public void setEventosDisponibles(ArrayList<Evento> eventosDisponibles) {
         this.eventosDisponibles = eventosDisponibles;
     }
+    
+    public boolean agregarEvento(Evento evento){ // Un evento puede estar muchas veces en el lugar
+        return this.eventosDisponibles.add(evento);
+    }
 
     @Override
     public String toString() {

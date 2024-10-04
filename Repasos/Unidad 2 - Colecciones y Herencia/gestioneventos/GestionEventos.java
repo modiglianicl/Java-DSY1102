@@ -21,7 +21,8 @@ public class GestionEventos {
         ContenedorEventos eventos = new ContenedorEventos();
         ContenedorReservas reservas = new ContenedorReservas();
         ContenedorClientes clientes = new ContenedorClientes();
-        Interface ui = new Interface(scanner,eventos,reservas,clientes);
+        ContenedorLugares lugares = new ContenedorLugares();
+        Interface ui = new Interface(scanner,eventos,reservas,clientes,lugares);
         ui.iniciar();
     }
     

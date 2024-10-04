@@ -64,16 +64,18 @@ public class ContenedorEventos {
 
     }
 
-    public void mostrarEventosNumerados() {
+    public int mostrarEventosNumerados() {
+        int indice = 0;
         if (this.eventos.isEmpty()) {
             System.out.println("No hay eventos!");
         } else {
-            int contador = 1;
+            indice = 1;
             for (Evento tempEvento : this.eventos) {
-                System.out.println(contador + ".- " + tempEvento.getNombre());
-                contador++;
+                System.out.println(indice + ".- " + tempEvento.getNombre());
+                indice++;
             }
         }
+        return indice-1;
     }
     
     public boolean existeEvento(Evento evento){ // Compara IDS!
