@@ -1,18 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+// Subido al branch "master" a traves de netBeans Git
+
 package gestioncursosgpt;
 
-/**
- *
- * @author chuck
- */
 public class GestionCursosGPT {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         // Instanciando Objetos
         Curso mateOnline = new CursoOnline("Teams", "Matematica 1", 25);
