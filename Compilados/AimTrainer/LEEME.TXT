@@ -1,0 +1,6 @@
+Si no funciona:
+- Prueba con ejecutar con "ejecutar.bat" que está en la carpeta
+- Baja el ultimo java : https://www.java.com/download/ie_manual.jsp
+- Instala el ultimo SDK : https://www.oracle.com/java/technologies/downloads/
+
+
